@@ -28,7 +28,10 @@ public class EmployeeController {
 	public String getGreetings(@PathVariable String username) {
 		return "good morning --> " + username;
 	}
-
+	@GetMapping("/getwellwishes/{username}")
+	public String getWellWishes(@PathVariable String username) {
+		return "Keep It My Brother --> " + username;
+	}
 	@PostMapping("/saveemployee")
 	public Employee saveEmployee(@RequestBody Employee employee) {
 		System.out.println(employee);
@@ -39,8 +42,7 @@ public class EmployeeController {
 	@GetMapping("/getallemployeelist")
 	public java.util.List<Employee> getAllEmployee() {
 		return CacheManager.cache.values().stream().collect(Collectors.toList());
-//		java.util.Listac<Employee> ee = employeeRepositery.findAll();
-//		return ee;
+
 	}
 
 	@GetMapping("/getallemployeelistascending")
